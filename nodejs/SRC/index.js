@@ -79,7 +79,7 @@ db.connect();
 app.use(express.urlencoded({
   extended:true
  }));
- app.locals.local = 'https://doan2-ugfh.onrender.com';
+ app.locals.local = 'https://qlsk-uit.onrender.com';
  app.locals.oke='20520999';
 //  app.use(express.json);
 route(app);
