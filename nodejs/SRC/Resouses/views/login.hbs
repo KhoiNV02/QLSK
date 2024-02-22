@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="icon" href="/nodejs/SRC/favicon_package_v0.16/favicon-32x32.png" />
+  <link rel="stylesheet" href="../page-1/styles/login.css">
+  <title>Document</title>
+</head>
+<body>
+
+  <div class="main">
+    <div class="login">
+      <div class="headerlogin">
+        <img src="../page-1/assets/image-2.png"/>
+        <div class="des">
+          <p >Truyền thông và sự kiện</p>
+          <p >Trường đại học Công nghệ Thông tin - ĐHQG - HCM </p>
+        </div>
+        
+      </div>
+      <div class="bodylogin">
+        <div class="log">
+          <input id="account" type="text" onkeydown="handleKeyPress(event)">
+          <input id="pass" type="password" onkeydown="handleKeyPress(event)">
+          <img id="matkhaune" src="../page-1/assets/closeEye.png" alt="">
+        </div>
+        <a href="">Quên mật khẩu</a>
+        <div class="DangNhap">
+          Đăng Nhập
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <div id="customAlert" class="custom-alert hidden">
+    Đăng nhập thành công
+</div>
+</body>
+</html>
+<script>
+ 
+  oke=123;
+   console.log({{oke}});
+  var matkhaune=document.querySelector('#matkhaune');
+  var pass=document.querySelector('#pass');
+  var o=true;
+matkhaune.onclick=function(){
+  if (o)
+  {
+    matkhaune.setAttribute("src",'../page-1/assets/eye.png');
+  matkhaune.style.top='8.5rem';
+  matkhaune.style.width='8%';
+  pass.type="text";
+o=!o;  
+}
+else
+{
+  o=!o;
+  matkhaune.setAttribute("src",'../page-1/assets/closeEye.png');
+  matkhaune.style.top='8.09rem';
+  matkhaune.style.width='8.4%';
+  pass.type="password";
+}
+}
+
+var DangNhap=document.querySelector('.DangNhap');
+var account=document.querySelector('#account');
+var Acount=[
+{
+  account:'20520999',
+  pass:'123',
+},
+{
+  account:'UIT',
+  pass:'123',
+},
+{
+  account:'CNPM',
+  pass:'123',
+},
+{
+  account:'GoogleDeveloper',
+  pass:'123',
+},
+{
+  account:'admin',
+  pass:'123',
+},
+{
+  account:'20521554',
+  pass:'123',
+},
+];
+function handleKeyPress(event) {
+    // Kiểm tra xem phím được nhấn có phải là phím "Enter" không (mã ASCII: 13)
+    if (event.key === 'Enter') {
+       check();
+    }
+}
+function check(){
+   if (account.value===''||pass.value==='')
+  alert('Không được để trống tài khoản hoặc mật khẩu');
+  else
+  if (!Acount.some(item => item.account === account.value))
+  alert("Tài Khoản không tồn tại");
+  else
+  if (!Acount.some(item => item.account === account.value&&item.pass === pass.value))
+  alert("Mật khẩu sai");
+  else
+  if (account.value==='UIT')
+  {
+    showCustomAlert();
+    account.value=1;
+    window.location.href = `{{local}}/upSK?type=${account.value}`;
+  }
+  else
+  if (account.value==='CNPM')
+  {
+    showCustomAlert();
+    account.value=2;
+    window.location.href = `{{local}}/upSK?type=${account.value}`;
+  }
+  else
+  if (account.value==='GoogleDeveloper')
+  {
+    showCustomAlert();
+    account.value=3;
+    window.location.href = `{{local}}/upSK?type=${account.value}`;
+  }
+  else
+  if (account.value==='admin')
+  {
+    window.location.href=`{{local}}/skTieuBieu`;
+  }
+  else
+  {
+showCustomAlert();
+    window.location.href = `{{local}}/Home?MSSV=${account.value}`;
+  }
+}
+DangNhap.onclick=function()
+{
+ check();
+}
+
+function showCustomAlert() {
+    var customAlert = document.getElementById('customAlert');
+    
+    // Hiển thị thông báo
+    customAlert.style.display = 'block';
+
+    // Đặt thời gian ẩn thông báo sau 1,5 giây (1500 ms)
+    setTimeout(function() {
+        customAlert.style.display = 'none';
+    }, 2000);
+}
+</script>

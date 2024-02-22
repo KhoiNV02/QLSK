@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <title>Trang để quản lý sự kiện</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter%3A400%2C700"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C700"/>
+  <link rel="stylesheet" href="../page-1/styles/CapNhat.css"/>
+  <link rel="stylesheet" href="../page-1/styles/addSK.css"/>
+</head>
+<body>
+<div class="trang-qun-l-s-kin-333">
+  {{!-- <div class="header-xQu">
+    <div class="auto-group-tpgh-4yj">
+      <p class="trng-i-hc-cng-ngh-thng-tin-hqg-hcm-zMb">Trường đại học Công nghệ Thông tin - ĐHQG - HCM</p>
+      <p class="truyn-thng-v-s-kin-G4D">Truyền thông và sự kiện</p>
+      <img class="image-2-xSq" src="../page-1/assets/image-2-roP.png"/>
+    </div>
+    <p class="trang-ch-6ow">Trang chủ</p>
+    <p class="xt-thng-zeR">Xét thưởng</p>
+    <p class="ng-gp-uWV">Đóng góp</p>
+    <p class="cp-nht-EHs">Cập nhật</p>
+    <div class="auto-group-68tm-9Qq">Search.....</div>
+  </div>  --}}
+  <div class="auto-group-vqpm-R7T">
+    <div class="CapNhatSK">
+      <a href="#" id="CapNhat">Cập nhật sự kiện</a>
+      <select style="background-image: url('../page-1/assets/group.png');" id="capnhatsk" name="cars" class="auto-group-dkzh-f1o" aria-placeholder="Loại hình sự kiện">
+        <option value="volvo">Chọn sự kiện muốn cập nhật</option>
+               {{#each eventCurrent}}
+        <option value={{this._id}}>{{this.name}}</option>
+            {{/each}}
+      </select>
+    </div>
+  </div>
+  <h1 class="tieude">Form Thêm Mới sự kiện</h1> 
+  <div class="auto-group-kplm-kQd">
+    <div class="first">
+      <label for="">Tên sự kiện</label>
+      <input type="text" class="auto-group-dkzh-f1o ch">
+    </div>
+    <div class="first">
+      <label for="">Link thông tin sự kiện</label>
+      <input type="text" class="auto-group-dkzh-f1o ch" id="Link">
+      <div class="check"><p>check Link</p></div>
+    </div>
+    <div class="first">
+      <div class="label">
+        <label for="" class="">Nội dung mô tả ngắn</label>
+        <label for="" class="SuaLoi" style="display: none;">Nội dung sửa lỗi</label>
+      </div>
+     
+      <div class="textarea">
+        <textarea name="" id="" cols="30" rows="10" class="ch"></textarea>
+        <textarea name="" id="" cols="30" rows="10" class="SuaLoi" style="display: none;"></textarea>
+      </div>
+      <div class="check"><p>Check</p></div>
+    </div>
+ 
+    <select style="background-image: url('../page-1/assets/group.png');" id="GiayKhen" name="cars" class="auto-group-dkzh-f1o" aria-placeholder="Loại hình sự kiện">
+      <option value="volvo">Chọn tiêu chí sự kiện</option>
+      <option value="1">Tình nguyện tốt</option>
+      <option value="2">Đạo đức tốt</option>
+      <option value="3">Học tập tốt</option>
+      <option value="4">Hội nhập tốt</option>
+      <option value="5">Thể lực tốt</option>
+    </select>
+    <div id="imageContainer" class="">
+      <input type="file" id="imageInput" accept="image/*" onchange="previewImage(event)"> 
+      <img id="previewImage" src="s" alt="Preview">
+  </div>
+
+  </div>
+  <div class="group-7-R2u" id="update">Thêm Mới</div>
+    <div class="group-7-R2u" id="update1" style="display: none;">Cập Nhật</div>
+
+  <div class="footer-gzR">
+    <div class="group-9-F1w">
+      <img class="image-2-U9b" src="../page-1/assets/image-2-Mg1.png"/>
+      <p class="trng-i-hc-cng-ngh-thng-tin-hqg-hcm-rR3">Trường đại học Công nghệ Thông tin - ĐHQG - HCM</p>
+    </div>
+    <div class="group-10-ii9">
+      <p class="khu-ph-6-plinh-trung-tpth-c-tph-ch-minh-dq7">Khu phố 6, P.Linh Trung, Tp.Thủ Đức, Tp.Hồ Chí Minh.</p>
+      <p class="in-thoi-028-372-51993-ext-113h-t-xa-qua-mng-112h-chnh-quy-9YZ">Điện thoại: (028) 372 51993, Ext: 113(Hệ từ xa qua mạng), 112(Hệ chính quy).</p>
+      <p class="email-uitgmailcom-dyX">Email: UIT@gmail.com</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  var CapNhat=document.querySelector("#CapNhat");
+  var capnhatsk=document.querySelector("#capnhatsk");
+  var update=document.querySelector("#update");
+  var update2=document.querySelector("#update1");
+  var tieude=document.querySelector(".tieude");
+  var check123=document.querySelectorAll(".check");
+   var preview = document.getElementById('previewImage');
+   var textarea=document.querySelectorAll('textarea');
+   var SuaLoi=document.querySelectorAll('.SuaLoi');
+   var Link=document.querySelector("#Link");
+   var ch=document.querySelectorAll(".ch");
+   var GiayKhen=document.querySelector("#GiayKhen");
+     var selectedValue ;
+   var Cap={{{TYPE}}};
+   var eventCurrent={{{json eventCurrent}}};
+   var currentDate = new Date();
+   var id;
+  
+   capnhatsk.addEventListener("change",function()
+   {
+   for (var i=0;i<eventCurrent.length;i++)
+   if (capnhatsk.value===eventCurrent[i]._id)
+    {
+      ch[0].value=eventCurrent[i].name;
+         ch[1].value=eventCurrent[i].link;
+            ch[2].value=eventCurrent[i].descript;
+            for (var j=0;j<5;j++)
+            {
+            var selectedOptionText = GiayKhen.options[j].text;
+            if (selectedOptionText===eventCurrent[i].condition)
+            {
+            GiayKhen.value = j;
+            selectedValue=selectedOptionText;
+            break;
+            }
+            }
+               
+                preview.src=eventCurrent[i].img;
+    }
+   })
+   var label=document.querySelector(".label");
+  var chick=false;
+   check123[0].onclick=function(){
+    console.log(Link.value);
+    window.open(Link.value, '_blank');
+   }
+  var che=false;
+  check123[1].onclick=function()
+  {
+   sendMessage().then(function(d)
+   {
+    label.querySelectorAll("label")[1].innerHTML='Nội dung sửa lỗi';
+   })
+      label.querySelectorAll("label")[1].innerHTML='Đang xử lý';
+      textarea[1].value='';
+      
+    // content chứa giá trị được giải quyết từ hàm sendMessage
+    textarea[0].style.width = "33.5rem";
+    textarea[1].style.width = "33.5rem";
+    SuaLoi[0].style.display = 'block';
+    SuaLoi[1].style.display = 'block';
+
+  }
+  CapNhat.onclick=function()
+  {
+      if (che)
+      {
+        CapNhat.textContent='Cập nhật sự kiện';
+        capnhatsk.style.display='none';
+        che=!che;
+        update2.style.display='none';
+        update.style.display='flex';
+        tieude.textContent="Form thêm mới sự kiện"
+        tieude.style.color='#0138a3';
+      }
+      else
+      {
+        capnhatsk.style.display='flex';
+        CapNhat.textContent='Đóng cập nhật sự kiện';
+        update.style.display='none';
+        update2.style.display='flex';
+        che=!che;
+        tieude.textContent="Form cập nhật sự kiện"
+        tieude.style.color='#63df63';
+      }
+  }
+   var anh;
+    function previewImage(event) {
+    var input = event.target;
+    
+    var reader = new FileReader();
+
+    reader.onload = function() {
+        preview.src = reader.result;
+        chick=true;
+    };
+anh=input.files[0];
+    reader.readAsDataURL(input.files[0]);
+}
+
+</script>
+<script type="module">
+  import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.5.0/firebase-app.js';
+  import { getStorage, ref, uploadBytes, getDownloadURL } from 'https://www.gstatic.com/firebasejs/9.5.0/firebase-storage.js';
+const firebaseConfig = {
+  apiKey: "AIzaSyC3bcHFNjJ2_obnMGg3gwGsgd5MAGYwcK4",
+  authDomain: "doan2-15a36.firebaseapp.com",
+  projectId: "doan2-15a36",
+  storageBucket: "doan2-15a36.appspot.com",
+  messagingSenderId: "393629700160",
+  appId: "1:393629700160:web:02107109fd8dfe82044fa5",
+  measurementId: "G-JYFQ2X6M42"
+};
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+var URL;
+var data;
+
+
+const year = currentDate.getFullYear();
+const storage = getStorage(app);
+  function upload(){
+     return new Promise((resolve, reject) => {
+     const mountainsRef = ref(storage, `${Math.floor(Math.random() * (9999 - 1000 + 1)) + 1000}.png`);
+uploadBytes(mountainsRef,anh).then((snapshot) => {
+getDownloadURL(snapshot.ref).then((url)=>{
+  resolve(url);
+ })
+});
+  });
+
+ }
+
+
+var selectBox=document.querySelector("#GiayKhen");
+
+
+selectBox.addEventListener("change", function() {
+      // Lấy giá trị hiện tại của select box
+  selectedValue    = selectBox.options[selectBox.selectedIndex].text;
+
+      // In giá trị ra console để kiểm tra
+    });
+ update2.onclick=function()
+   {
+    console.log(selectedValue);
+    var ck=false;
+    if (GiayKhen.value==='volvo')
+  {
+     alert("Không đường để trống trường thông tin");
+  }
+  else
+if (ck===false)
+{
+  ck=true;
+for (var i=0;i<ch.length;i++)
+{
+  
+  if (ch[i].value==='')
+  {
+    ck=false;
+  alert("Không đường để trống trường thông tin");
+  break;}
+}
+}
+if (ck===true)
+  {
+    var dateObject = new Date(currentDate);
+var monthNames = [
+  "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+  "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+];
+var dayOfWeek = dateObject.toLocaleDateString('en-US', { weekday: 'long' });
+var monthIndex = dateObject.getMonth();
+var monthName = monthNames[monthIndex];
+
+
+var day = dateObject.getDate();      
+var year = dateObject.getFullYear(); 
+var result='';
+result+=(dayOfWeek+', '+monthName+' '+day+', '+year);
+    update2.onclick=null;
+      if (chick===true)
+  {
+upload().then(function(url){
+   data= {id:capnhatsk.value,name:ch[0].value,link:ch[1].value,condition:selectedValue,img:url,descript:ch[2].value,type:Cap,dateUp:result};
+    axios.post('{{local}}/upSK/updateSK', data)
+    .then(response => {
+     alert("Cập nhật sự kiện thành công");
+     location.reload();
+    })
+    .catch(error => {
+
+      console.error('Error uploading image:', error);
+    });
+                  });
+  }
+  //sửa folder views
+  else
+  {
+     data= {id:capnhatsk.value,name:ch[0].value,link:ch[1].value,condition:selectedValue,img:preview.src,descript:ch[2].value,type:Cap,dateUp:result};
+    axios.post('{{local}}/upSK/updateSK', data)
+    .then(response => {
+     alert("Cập nhật sự kiện thành công");
+     location.reload();
+    })
+    .catch(error => {
+
+      console.error('Error uploading image:', error);
+    });
+  }
+  }
+   }
+
+update.onclick=function()
+{
+  var ck=false;
+    if (GiayKhen.value==='volvo')
+  {
+     alert("Không đường để trống trường thông tin");
+  }
+  else
+  if (chick===false)
+  {
+    alert("Thiếu ảnh sự kiện");
+  }
+  else
+if (ck===false)
+{
+  ck=true;
+for (var i=0;i<ch.length;i++)
+{
+  
+  if (ch[i].value==='')
+  {
+    ck=false;
+  alert("Không đường để trống trường thông tin");
+  break;}
+}
+}
+if (ck===true)
+  {
+    var dateObject = new Date(currentDate);
+var monthNames = [
+  "Jan", "Feb", "Mar", "Apr", "May", "Jun",
+  "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"
+];
+var dayOfWeek = dateObject.toLocaleDateString('en-US', { weekday: 'long' });
+var monthIndex = dateObject.getMonth();
+var monthName = monthNames[monthIndex];
+
+
+var day = dateObject.getDate();      
+var year = dateObject.getFullYear(); 
+var result='';
+result+=(dayOfWeek+', '+monthName+' '+day+', '+year);
+    update.onclick=null;
+upload().then(function(url){
+   data= {name:ch[0].value,link:ch[1].value,condition:selectedValue,img:url,descript:ch[2].value,type:Cap,dateUp:result};
+    axios.post('{{local}}/upSK/upsk', data)
+    .then(response => {
+     alert("Thêm mới sự kiện thành công");
+    {{!-- nav[1].onclick(); --}}
+    })
+    .catch(error => {
+
+      console.error('Error uploading image:', error);
+    });
+                  });
+  }
+}
+
+</script>
+<script>
+
+const apiKey = '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'; // Thay thế YOUR_API_KEY bằng API key của bạn
+
+function sendMessage() {
+  alert("Hệ thống đang kiểm tra, bạn vui lòng chờ trong giây lát");
+  return new Promise(function(resolve,reject)
+  {
+const userInput =textarea[0].value;
+  const userMessage = ` viết lại đoạn văn (trong ngữ cảnh mô tả một sự kiện sắp được tổ chức) sau: "${userInput}"`;
+
+  // Gửi yêu cầu đến ChatGPT API và xử lý câu trả lời
+  const url ='https://api.openai.com/v1/chat/completions';
+  const requestOption = {
+    method: "POST",
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${apiKey}`, // Sử dụng template string để thêm API key vào tiêu đề Authorization
+    },
+    body: JSON.stringify({
+      model: "gpt-3.5-turbo",
+      messages: [{ role: "user", content: userMessage }],
+      // prompt: userMessage,
+      // max_tokens: 100,
+    }),
+  }
+  fetch(url,requestOption)
+  .then(response => response.json())
+  .then(data => {
+    textarea[1].value=data.choices[0].message.content;
+    console.log(data.choices[0].message.content);
+    resolve(1);
+    if (data.error) {
+      console.error('API Error:', data.error.message);
+      
+    }
+  })
+  .catch(error => console.error('Error:', error));
+  }) 
+}
+
+</script>
+</body>

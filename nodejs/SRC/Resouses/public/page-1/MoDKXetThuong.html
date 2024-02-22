@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <title>admin duyệt sự kiện</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter%3A400%2C700"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C700"/>
+  <link rel="stylesheet" href="./styles/admin.css"/>
+  <link rel="stylesheet" href="./styles/MoDKXEtThuong.css">
+</head>
+<body>
+<div class="admin-duyt-s-kin-nyB">
+  <div class="auto-group-leto-j7j">
+    <div class="header-SXw">
+      <div class="auto-group-sdkj-k2q">
+        <p class="trng-i-hc-cng-ngh-thng-tin-hqg-hcm-FkH">Trường đại học Công nghệ Thông tin - ĐHQG - HCM</p>
+        <p class="truyn-thng-v-s-kin-71o">Truyền thông và sự kiện</p>
+        <img class="image-2-oQR" src="./assets/image-2-qZ7.png"/>
+      </div>
+      <div class="auto-group-jz8h-8hb">
+      </div>
+    </div>
+    <p class="cc-s-kin-ch-c-duyt-GYu">Mở đăng ký xét thưởng</p>
+<div class="chua">
+
+  <table>
+    <!-- Dòng tiêu đề -->
+    <thead>
+      <tr>
+        <th>STT</th>
+        <th>Tên Danh Hiệu Xét Thưởng</th>
+        <th>Link Thông Tin</th>
+        <th>Thời gian kết thúc sự kiện</th>
+      </tr>
+    </thead>
+    <!-- Dòng dữ liệu -->
+    <tbody id="tableBody">
+      
+      <tr>
+        
+        <td  class="Hang"><p>1</p></td>
+        <td  class="Hang"><input type="text" value="Sinh Viên Năm Tốt Khoa CNPM" placeholder="Mời nhập tên danh hiệu"></td>
+        <td  class="Hang"><input type="url" placeholder="Chưa có link thông tin">
+        <a class="KiemTra" href="https://www.uit.edu.vn/khoa-cong-nghe-phan-mem-mo-don-dang-ky-sinh-vien-5-tot-cap-khoa" target="_blank" style="display: none;">Kiểm tra link cung cấp</a></td>
+        <td class="Ngay">  <input type="date" id="datepicker" name="datepicker"> <div id="Xoa" onclick="deleteRow(this)"><p>Xóa</p></div></td>
+    
+      </tr>
+      <tr>
+        <td colspan="4"><button class="buttonthem" onclick="addRow()">+</button></td>
+      </tr>
+      <!-- Thêm các dòng khác nếu cần -->
+    </tbody>
+  </table>
+
+</div>
+
+<div class="group-7-R2u" id="update1">Đăng thông tin</div>
+  </div>
+  <a href="#" id="backToTopBtn" onclick="scrollToTop()"><p> &#8593; </p></a>
+  <div class="footer-A13">
+    <div class="group-9-7S5">
+      <img class="image-2-Sz9" src="./assets/image-2-P4q.png"/>
+      <p class="trng-i-hc-cng-ngh-thng-tin-hqg-hcm-Nso">Trường đại học Công nghệ Thông tin - ĐHQG - HCM</p>
+    </div>
+    <div class="group-10-sJm">
+      <p class="khu-ph-6-plinh-trung-tpth-c-tph-ch-minh-z8V">Khu phố 6, P.Linh Trung, Tp.Thủ Đức, Tp.Hồ Chí Minh.</p>
+      <p class="in-thoi-028-372-51993-ext-113h-t-xa-qua-mng-112h-chnh-quy-V5F">Điện thoại: (028) 372 51993, Ext: 113(Hệ từ xa qua mạng), 112(Hệ chính quy).</p>
+      <p class="email-uitgmailcom-nKF">Email: UIT@gmail.com</p>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  var update1=document.querySelector("#update1");
+  var Ngay=document.querySelector(".Ngay");
+  update1.onclick=function()
+  {
+    console.log(new Date(Ngay.querySelector("input").value));
+  }
+   function deleteRow(button) {
+      var row = button.parentNode.parentNode;
+      // Cách 1: Sử dụng removeChild()
+      // row.parentNode.removeChild(row);
+
+      // Cách 2: Sử dụng remove()
+      row.remove();
+    }
+var Hang=document.querySelectorAll(".Hang");
+var KiemTra=document.querySelectorAll(".KiemTra");
+var tableBody=document.getElementById('tableBody');
+  function addRow() {
+       tableBody = document.getElementById('tableBody');
+      
+      var newRow = document.createElement('tr');
+      newRow.innerHTML = `
+      <td class="Hang"><p></p></td>
+        <td class="Hang"><input type="text" value="" placeholder="Mời nhập tên danh hiệu"></td>
+        <td class="Hang">
+          <input type="url" placeholder="Chưa có link thông tin">
+          <a class="KiemTra" href="#" target="_blank" style="display: none;">Kiểm tra link cung cấp</a>
+        </td>
+        <td class="Ngay">  <input type="date" id="datepicker" name="datepicker"> <div id="Xoa" onclick="deleteRow(this)"><p>Xóa</p></div></td>
+      `;
+      // Chèn dòng mới trước dòng của nút "buttonthem"
+
+      tableBody.insertBefore(newRow, tableBody.lastElementChild);
+     Hang=document.querySelectorAll(".Hang");
+     KiemTra=document.querySelectorAll(".KiemTra");
+     if (typeof Hang[Hang.length - 6] !== 'undefined')
+     Hang[Hang.length-3].querySelector("p").textContent=parseInt(Hang[Hang.length-6].querySelector("p").textContent)+1;
+    else
+    Hang[Hang.length-3].querySelector("p").textContent='1';
+    //  Hang[Hang.length-3].querySelector("p").textContent=parseInt(Hang[Hang.length-6].querySelector("p").textContent)+1;
+    goi(Hang.length-1);
+    }
+ 
+goi(2);
+function goi(t)
+{
+  var index=t;
+Hang[index].addEventListener('change',function()
+{
+KiemTra[Math.floor(parseInt(index) / 3)].href=Hang[index].querySelector("input").value;
+Hang[index].querySelector("input").value='';
+Hang[index].querySelector("input").placeholder='Nhập link thành công';
+KiemTra[Math.floor(parseInt(index) / 3)].style.display='block';
+})
+
+}
+
+
+
+document.getElementById('datepicker').addEventListener('change', function() {
+      var selectedDate = new Date(this.value);
+      console.log('Selected Date:', selectedDate);
+      // You can use the selectedDate variable for further processing
+    });
+// Hiển thị hoặc ẩn nút quay về đầu trang dựa vào vị trí cuộn trang
+window.onscroll = function() {
+    showBackToTopButton();
+};
+
+function showBackToTopButton() {
+    var backToTopBtn = document.getElementById('backToTopBtn');
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        backToTopBtn.style.display = 'flex';
+    } else {
+        backToTopBtn.style.display = 'none';
+    }
+}
+
+// Thực hiện cuộn về đầu trang khi nút được click
+function scrollToTop() {
+    document.body.scrollTop = 0; // Cho trình duyệt Safari
+    document.documentElement.scrollTop = 0; // Cho trình duyệt Chrome, Firefox, IE và Opera
+}
+
+</script>
+</body>

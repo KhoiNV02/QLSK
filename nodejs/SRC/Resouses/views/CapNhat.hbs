@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <title>Trang để quản lý sự kiện</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter%3A400%2C700"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C700"/>
+  <link rel="stylesheet" href="../page-1/styles/CapNhat.css"/>
+</head>
+<body>
+    <div class="moden">
+  <div class="im">
+     <img src="../page-1/assets/image-2.png" alt="">
+  </div>
+  </div>
+<div class="trang-qun-l-s-kin-333">
+  
+  {{!-- <div class="header-xQu">
+    <div class="auto-group-tpgh-4yj">
+      <p class="trng-i-hc-cng-ngh-thng-tin-hqg-hcm-zMb">Trường đại học Công nghệ Thông tin - ĐHQG - HCM</p>
+      <p class="truyn-thng-v-s-kin-G4D">Truyền thông và sự kiện</p>
+      <img class="image-2-xSq" src="../page-1/assets/image-2-roP.png"/>
+    </div>
+    <p class="trang-ch-6ow">Trang chủ</p>
+    <p class="xt-thng-zeR">Xét thưởng</p>
+    <p class="ng-gp-uWV">Đóng góp</p>
+    <p class="cp-nht-EHs">Cập nhật</p>
+    <div class="auto-group-68tm-9Qq">Search.....</div>
+  </div> --}}
+  <div class="auto-group-vqpm-R7T">
+    <div class="auto-group-kplm-kQd">
+    
+      <select style="background-image: url('../page-1/assets/group.png');" id="GiayKhen" name="cars" class="auto-group-dkzh-f1o" aria-placeholder="Loại hình sự kiện">
+        <option value="volvo">Chọn loại giấy khen thưởng</option>
+        <option value="1">giấy khen loại hình học thuật</option>
+        <option value="2">giấy khen loại hình thể thao</option>
+        <option value="3">giấy khen loại hình tình nguyện</option>
+        <option value="4">giấy khen loại hình hội nhập</option>
+      </select>
+      <!-- <div class="group-6-mj3">Upload</div> -->
+      <div id="imageContainer" class="" style="font-size: 1.5rem; display: flex; gap: 1rem;align-items: center;">
+        <input type="file" id="imageInput" accept="image/*" onchange="previewImage(event)"> 
+        <img id="previewImage" src="" alt="Preview" style="display: none;">
+    </div>
+    </div>
+    <div class="mid">
+      <div class="title">
+     <h1>Danh sách các chứng chỉ bạn đã cập nhật</h1>
+      <p href="#" id="delete">Xóa Chứng Chỉ</p>
+      </div>
+     
+ <table>
+        <!-- Dòng tiêu đề -->
+        <thead>
+          <tr>
+            <th>STT</th>
+            <th style="width: 15%; text-align: center;">Loại chứng chỉ</th>
+            <th style="  text-align: center;">Hình ảnh của chứng chỉ đã cập nhật</th>
+            <th class="CheckBox" style="width: 15%;">
+              Chọn tất cả
+              <br>
+              <input type="checkbox" id="he" class="preference1" name="preference1" value={{this._id}}>
+              </th>
+          </tr>
+        </thead>
+        <!-- Dòng dữ liệu -->
+        <tbody>
+          {{#each certificate}}
+            <tr>
+            <td> 
+      {{sum @index 1}}
+            </td>
+             <td>
+              {{this.condition}}
+            </td>
+          <td style="text-align: center;">
+            <img src={{this.img}} alt="" style="width: 25%; height: auto;" class="Big">
+          </td>
+            <td class="CheckBox">
+              <input type="checkbox" class="preference1" name="preference1" value={{this._id}}>
+          </td>
+          </tr>
+            {{/each}}
+          
+          <!-- Thêm các dòng khác nếu cần -->
+        </tbody>
+      </table>
+    </div>
+   
+    <div class="group-7-R2u" id="update">Cập nhật</div>
+     <div class="group-7-R2u" id="Xoa" style="margin-left: 80%;">Xóa</div>
+  </div>
+ 
+  <div class="footer-gzR">
+    <div class="group-9-F1w">
+      <img class="image-2-U9b" src="../page-1/assets/image-2-Mg1.png"/>
+      <p class="trng-i-hc-cng-ngh-thng-tin-hqg-hcm-rR3">Trường đại học Công nghệ Thông tin - ĐHQG - HCM</p>
+    </div>
+    <div class="group-10-ii9">
+      <p class="khu-ph-6-plinh-trung-tpth-c-tph-ch-minh-dq7">Khu phố 6, P.Linh Trung, Tp.Thủ Đức, Tp.Hồ Chí Minh.</p>
+      <p class="in-thoi-028-372-51993-ext-113h-t-xa-qua-mng-112h-chnh-quy-9YZ">Điện thoại: (028) 372 51993, Ext: 113(Hệ từ xa qua mạng), 112(Hệ chính quy).</p>
+      <p class="email-uitgmailcom-dyX">Email: UIT@gmail.com</p>
+    </div>
+  </div>
+
+ 
+</div>
+
+{{!-- <script type="module" src="https://cdnjs.cloudflare.com/ajax/libs/firebase/10.7.1/firebase-storage.js"></script>
+<script type="module" src="https://cdnjs.cloudflare.com/ajax/libs/firebase/10.7.1/firebase-app.js"> --}}
+</script>
+<script>
+  var Big=document.querySelectorAll(".Big");
+    var moden=document.querySelector(".moden");
+    for (var i = 0; i < Big.length; i++) {
+  Big[i].onclick = function (index) {
+    return function () {
+      moden.querySelector("img").setAttribute("src",Big[index].src)
+      moden.style.display='flex';
+    };
+  }(i);
+    }
+  console.log(moden);
+  moden.onclick=function()
+  {
+    moden.style.display='none';
+  }
+   var checkbox1 = document.querySelector("#he");
+     var checkbox=document.querySelectorAll(".CheckBox");
+    // Gán sự kiện "change" cho checkbox
+   document.addEventListener("DOMContentLoaded", function() {
+      // Lấy tham chiếu đến checkbox
+
+      // Gán sự kiện "change" cho checkbox
+      checkbox1.addEventListener("change", function() {
+        // Kiểm tra xem checkbox có được chọn hay không
+        if (checkbox1.checked) {
+         for (var i=0;i<checkbox.length;i++)
+         {
+          checkbox[i].querySelector("input").checked=true;
+         }
+        } else {
+            for (var i=0;i<checkbox.length;i++)
+         {
+         checkbox[i].querySelector("input").checked=false;
+         }
+        }
+      });
+    });
+  
+  var delete1=document.querySelector("#delete");
+   var delete2=document.querySelector("#Xoa");
+   var update=document.querySelector("#update");
+  var oo=true;
+  delete1.onclick=function()
+  {
+      if (oo)
+      {
+        delete1.style.textDecoration='underline';
+        delete1.style.color='#0056ff';
+      for (var i=0;i<checkbox.length;i++)
+      {
+        checkbox[i].style.display='table-cell';
+       
+      }
+       update.style.display='none';
+        delete2.style.display='flex';
+        oo=!oo;
+      }
+      else
+      {
+        delete1.style.textDecoration='none';
+          delete1.style.color='black';
+         for (var i=0;i<checkbox.length;i++)
+      {
+        checkbox[i].style.display='none';
+      }
+       update.style.display='flex';
+        delete2.style.display='none';
+          oo=!oo;
+      }
+  }
+  delete2.onclick=function()
+  {
+  var result1 = prompt("vui lòng nhập 'Delete Certificate' để xác nhận việc xóa");
+
+              if(result1 === 'Delete Certificate')  {
+              var Mang=[];
+    for (var i=1;i<checkbox.length;i++)
+    {
+        if (checkbox[i].querySelector("input").checked==true)
+        {
+        var obj={
+      id:checkbox[i].querySelector("input").value,
+                  }
+            Mang.push(obj);
+        }
+    }
+var data={Mang:Mang};
+    axios.post('{{local}}/CapNhat/delete', data)
+    .then(response => {
+     alert("Xóa các chứng chỉ được chọn thành công");
+     location.reload();
+    })
+    .catch(error => {
+      console.error('Error uploading image:', error);
+    });
+              }
+              else
+              {
+                alert("Xóa thất bại");
+              }
+    
+  }
+  var preference1=document.querySelectorAll(".preference1");
+  for (var i=0;i<preference1.length;i++)
+  {
+    console.log(preference1[i].value);
+  }
+  var check=false;
+   var formData;
+   var anh;
+   var mid=document.querySelector(".mid");
+   var preview = document.getElementById('previewImage');
+    function previewImage(event) {
+      preview.style.display='flex';
+    var input = event.target;
+    
+    var reader = new FileReader();
+
+    reader.onload = function() {
+        preview.src = reader.result;
+        mid.style.marginTop="-50px";
+      check=true;
+    };
+
+console.log(input.files[0]);
+anh=input.files[0];
+    reader.readAsDataURL(input.files[0]);
+   formData   = new FormData();
+  formData.append('image', input.files[0]);
+}
+</script>
+<script type="module">
+
+
+  import { initializeApp } from 'https://www.gstatic.com/firebasejs/9.5.0/firebase-app.js';
+  import { getStorage, ref, uploadBytes, getDownloadURL } from 'https://www.gstatic.com/firebasejs/9.5.0/firebase-storage.js';
+const firebaseConfig = {
+  apiKey: "AIzaSyC3bcHFNjJ2_obnMGg3gwGsgd5MAGYwcK4",
+  authDomain: "doan2-15a36.firebaseapp.com",
+  projectId: "doan2-15a36",
+  storageBucket: "doan2-15a36.appspot.com",
+  messagingSenderId: "393629700160",
+  appId: "1:393629700160:web:02107109fd8dfe82044fa5",
+  measurementId: "G-JYFQ2X6M42"
+};
+   var t={{{json MSSV}}};
+// Initialize Firebase
+const app = initializeApp(firebaseConfig);
+var URL;
+var data;
+
+var currentDate = new Date();
+const year = currentDate.getFullYear();
+const storage = getStorage(app);
+  function upload(){
+     return new Promise((resolve, reject) => {
+     const mountainsRef = ref(storage, `${t}${Math.floor(Math.random() * (9999 - 1000 + 1)) + 1000}.png`);
+uploadBytes(mountainsRef,anh).then((snapshot) => {
+getDownloadURL(snapshot.ref).then((url)=>{
+  resolve(url);
+ })
+});
+  });
+
+ }
+
+
+var selectBox=document.querySelector("#GiayKhen");
+
+  var selectedValue ;
+selectBox.addEventListener("change", function() {
+      // Lấy giá trị hiện tại của select box
+  selectedValue    = selectBox.options[selectBox.selectedIndex].text;
+
+      // In giá trị ra console để kiểm tra
+    });
+update.onclick=function()
+{
+  if (selectBox.value==='volvo')
+  alert("Vui lòng chọn loại giấy khen trước khi cập nhật");
+  else
+  if (check==false)
+  {
+    alert("Bạn chưa tải hình ảnh chứng chỉ lên");
+  }
+  else
+  {
+    update.onclick=null;
+upload().then(function(url){
+   data= {URL:url,MSSV:t,TYPE:selectedValue};
+    axios.post('{{local}}/CapNhat/Update', data)
+    .then(response => {
+     alert("cập nhật chứng chỉ thành công");
+     location.reload();
+    })
+    .catch(error => {
+
+      console.error('Error uploading image:', error);
+    });
+                  });
+  }
+}
+ var tt={mssv:t};
+ console.log(tt.mssv);
+{{!-- window.onload = function() {
+axios.get('{{local}}/CapNhat/getCertificate',{
+    params: tt, 
+  })
+.then(res=>{
+  console.log(res);
+})
+.catch(error=>{
+  console.error(error);
+})
+}; --}}
+
+</script>
+<script>
+var nav=document.querySelectorAll(".nav");
+   for (var j = 0; j < nav.length; j++) {
+        nav[j].style.textDecoration = 'none'; // Fix the typo in textDecorator
+        nav[j].style.color = 'black';
+
+      }
+ nav[3].style.color = '#0047fe';
+      nav[3].style.textDecoration = 'underline'; // Fix the typo in textDecorator
+</script>
+
+</body>

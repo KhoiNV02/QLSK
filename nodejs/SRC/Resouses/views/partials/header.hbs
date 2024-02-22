@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="../page-1/styles/desktop-1.css"/>
+</head>
+<body>
+
+<div class="desktop-1-4Qu">
+  <div class="auto-group-us8h-f9o">
+    <div class="header-n7w">
+      <div class="auto-group-stmo-EEq">
+        <p class="trng-i-hc-cng-ngh-thng-tin-hqg-hcm-LYm">Trường đại học Công nghệ Thông tin - ĐHQG - HCM</p>
+        <p class="truyn-thng-v-s-kin-LBP">Truyền thông và sự kiện</p>
+        <img class="image-2-Dky" src="../page-1/assets/image-2.png"/>
+      </div>  
+    <a href="#"><p class="trang-ch-xCm nav">Trang chủ</p></a>  
+      <a href="#">  <p class="xt-thng-pEy nav">Xét thưởng</p></a>
+     <a href="#"> <p class="ng-gp-ir9 nav">Đóng góp</p></a>
+      <a href="#"><p class="cp-nht-puB nav">Cập nhật</p></a>
+      <!-- <div class="auto-group-aajf-8us">Search.....</div> -->
+      <input type="text" class="auto-group-aajf-8us" placeholder="Search">
+     <div class="cir" style="background-image: url('../page-1/assets/image-2.png');"></div>
+     
+    </div>
+    
+  </div>
+
+  </div>
+      <div class="infoo">
+      <div class="mssv">
+        {{MSSV}}
+      </div>
+      <hr style="eight: 2px; 
+  background-color: #000;">
+      <div class="loggout">
+        Đăng xuất<span>&#8594;</span>
+      </div>
+     </div>
+</body>
+</html>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.2/axios.min.js" integrity="sha512-b94Z6431JyXY14iSXwgzeZurHHRNkLt9d6bAHt7BZT38eqV+GyngIi/tVye4jBKPYQ2lBdRs0glww4fmpuLRwA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+  function requireLogin(req, res, next) {
+    if (req.session && req.session.userId) {
+        return next(); // Cho phép tiếp tục nếu đã đăng nhập
+    } else {
+        return res.redirect('/login'); // Chuyển hướng đến trang đăng nhập nếu chưa đăng nhập
+    }
+}
+</script>
+<script>
+  var cir=document.querySelector('.cir');
+  var infoo=document.querySelector('.infoo');
+  var ok=false;
+  cir.onclick=function(){
+    if (!ok)
+    {
+    infoo.style.display='block';
+    ok=!ok;
+    }
+    else
+    if (ok)
+    {
+    infoo.style.display='none';
+    ok=!ok;
+    } 
+  }
+  var loggout=document.querySelector(".loggout");
+  loggout.onclick=function(){
+     window.location.href = `{{local}}`;
+  }
+  try{
+  var t={{{json MSSV}}};
+   }
+   catch(error){
+
+   }
+
+  var nav=document.querySelectorAll(".nav");
+  var do1=document.querySelector(".auto-group-stmo-EEq");
+  do1.onclick=function(){
+     window.location.href = `{{local}}/home?MSSV=${t}`;
+  }
+  for (var i = 0; i < nav.length; i++) {
+  nav[i].onclick = function (index) {
+    return function () {
+      for (var j = 0; j < nav.length; j++) {
+        nav[j].style.textDecoration = 'none'; // Fix the typo in textDecorator
+        nav[j].style.color = 'black';
+
+      }
+      nav[index].style.color = '#0047fe';
+      nav[index].style.textDecoration = 'underline'; // Fix the typo in textDecorator
+      if (index===0)
+      {
+             window.location.href = `{{local}}/home?MSSV=${t}`;
+      }
+      if (index===1)
+      {
+         window.location.href = `{{local}}/thuong?MSSV=${t}`;
+      }
+      else
+      if (index===2)
+      {
+      window.location.href = `{{local}}/views?MSSV=${t}`;
+      }
+      else
+      if (index===3)
+      {
+          window.location.href = `{{local}}/CapNhat?MSSV=${t}`;
+      }
+    };
+  }(i);
+}
+</script>

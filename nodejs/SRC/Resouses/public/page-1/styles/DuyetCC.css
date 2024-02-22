@@ -1,0 +1,145 @@
+.preference1
+{
+    text-align: center;
+    width: 3rem;
+    height: 3rem;
+}
+a
+{
+    color: black;
+}
+a:visited
+{
+    color: rgb(119, 108, 242);
+}
+.group-7-R2u {
+    margin-top: 2rem;
+    width: 24.9rem;
+    height: 4.2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.8rem;
+    font-weight: 700;
+    line-height: 1.2125;
+    color: #000000;
+    font-family: Inter, 'Source Sans Pro';
+    white-space: nowrap;
+    background-color: rgba(121, 165, 252, 0.5899999738);
+    border-radius: 2.25rem;
+    flex-shrink: 0;
+    cursor: pointer;
+  }
+  .group-7-R2u:active
+  {
+    opacity: 0.5;
+  }
+
+  .s-kin-ni-bt-nht-qFs {
+    margin: 0rem 2.8rem 0.1rem 0rem;
+    width: 71.5rem;
+    height: 50.6rem;
+    position: relative;
+    flex-shrink: 0;
+  }
+.s-kin-ni-bt-nht-qFs .frame-3-9XT {
+    box-sizing: border-box;
+    padding: 2.1rem 1.311rem 0.93rem 2.6rem;
+    width: 71.5rem;
+    height: 50.6rem;
+    position: absolute;
+    left: 0;
+    top: 0;
+    overflow: hidden;
+    border: solid 0.1rem #000000;
+    background-color: #ffffff;
+    border-radius: 2.5rem;
+  }
+ .s-kin-ni-bt-nht-qFs .frame-3-9XT .xun-tnh-nguyn-2024-ej7 {
+    margin: 0rem 0rem 31.8rem 0.038rem;
+    font-size: 2.4rem;
+    font-weight: 700;
+    line-height: 1.2125;
+    color: #042cff;
+    font-family: Inter, 'Source Sans Pro';
+    white-space: nowrap;
+  }
+ .s-kin-ni-bt-nht-qFs .frame-3-9XT .auto-group-jelm-Z5P {
+    width: 100%;
+    height: 12.7704rem;
+    position: relative;
+  }
+ .s-kin-ni-bt-nht-qFs .frame-3-9XT .auto-group-jelm-Z5P .friday-december-22-2023-u9F {
+    width: 26.5rem;
+    height: 2.5rem;
+    position: absolute;
+    left: 4.4rem;
+    top: 0.8rem;
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.2125;
+    color: #000000;
+    font-family: Inter, 'Source Sans Pro';
+    white-space: nowrap;
+  }
+ .s-kin-ni-bt-nht-qFs .frame-3-9XT .auto-group-jelm-Z5P .y-l-mt-trong-nhng-hot-ng-ngha-c-t-chc-hng-nm-vo-ma-xun-nhm-mc-ch-gip-nhng-mnh-i-km-may-mn-em-n-cho-mi-ngi-B6m {
+    width: 64.3rem;
+    height: 6.6rem;
+    position: absolute;
+    left: 2.8rem;
+    top: 4.1rem;
+    font-size: 1.8rem;
+    font-weight: 400;
+    line-height: 1.2125;
+    color: #000000;
+    font-family: Inter, 'Source Sans Pro';
+  }
+ .s-kin-ni-bt-nht-qFs .frame-3-9XT .auto-group-jelm-Z5P .vector-kp5 {
+    width: 3.5rem;
+    height: 3.5rem;
+    position: absolute;
+    left: 0rem;
+    top: 0;
+    object-fit: contain;
+    vertical-align: top;
+  }
+ .s-kin-ni-bt-nht-qFs .frame-3-9XT .auto-group-jelm-Z5P .group-5-67F {
+    width: 19.3885rem;
+    height: 3.2704rem;
+    position: absolute;
+    left: 48.2rem;
+    top: 9.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4016rem;
+    font-weight: 700;
+    line-height: 1.2125;
+    color: #000000;
+    font-family: Inter, 'Source Sans Pro';
+    white-space: nowrap;
+    background-color: rgba(123, 175, 243, 0.59);
+    border-radius: 1.752rem;
+ 
+  }
+  .image-3-JDK img
+{
+  width: 100%;
+  height: auto;
+  border-radius: 2.5564rem;
+}
+.s-kin-ni-bt-nht-qFs .image-3-JDK {
+    width: 68rem;
+    height: 27.4045rem;
+    position: absolute;
+    left: 1.6rem;
+    top: 7.3rem;
+    background-image: url('https://www.uit.edu.vn/sites/vi/files/image_from_word/tot_nghiep.jpg');
+    /* background-repeat: repeat; */
+    /* background-size: 100%; */
+    background-size: contain;
+    border-radius: 2.5564rem;
+    display: flex;
+    justify-content: center;
+    align-content: center;
+  }

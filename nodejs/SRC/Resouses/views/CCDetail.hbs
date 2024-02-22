@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <title>Trang để quản lý sự kiện</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter%3A400%2C700"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C700"/>
+  <link rel="stylesheet" href="../page-1/styles/CapNhat.css"/>
+</head>
+<body>
+    <div class="moden">
+  <div class="im">
+     <img src="../page-1/assets/image-2.png" alt="">
+  </div>
+  </div>
+<div class="trang-qun-l-s-kin-333">
+  
+  {{!-- <div class="header-xQu">
+    <div class="auto-group-tpgh-4yj">
+      <p class="trng-i-hc-cng-ngh-thng-tin-hqg-hcm-zMb">Trường đại học Công nghệ Thông tin - ĐHQG - HCM</p>
+      <p class="truyn-thng-v-s-kin-G4D">Truyền thông và sự kiện</p>
+      <img class="image-2-xSq" src="../page-1/assets/image-2-roP.png"/>
+    </div>
+    <p class="trang-ch-6ow">Trang chủ</p>
+    <p class="xt-thng-zeR">Xét thưởng</p>
+    <p class="ng-gp-uWV">Đóng góp</p>
+    <p class="cp-nht-EHs">Cập nhật</p>
+    <div class="auto-group-68tm-9Qq">Search.....</div>
+  </div> --}}
+  <div class="auto-group-vqpm-R7T">
+    {{!-- <div class="auto-group-kplm-kQd">
+    
+      <select style="background-image: url('../page-1/assets/group.png');" id="GiayKhen" name="cars" class="auto-group-dkzh-f1o" aria-placeholder="Loại hình sự kiện">
+        <option value="volvo">Chọn loại giấy khen thưởng</option>
+        <option value="1">giấy khen loại hình học thuật</option>
+        <option value="2">giấy khen loại hình thể thao</option>
+      </select>
+      <!-- <div class="group-6-mj3">Upload</div> -->
+      <div id="imageContainer" class="">
+        <input type="file" id="imageInput" accept="image/*" onchange="previewImage(event)"> 
+        <img id="previewImage" src="" alt="Preview">
+    </div>
+    </div> --}}
+    <div class="mid" style="margin-top: 2rem;">
+      <div class="title">
+     <h1>Danh sách các chứng chỉ của sinh viên {{MSSV}}</h1>
+      {{!-- <p href="#" id="delete">Xóa Chứng Chỉ</p> --}}
+      </div>
+     
+ <table>
+        <!-- Dòng tiêu đề -->
+        <thead>
+          <tr>
+            <th>STT</th>
+            <th style="width: 15%; text-align: center;">Loại chứng chỉ</th>
+            <th style="  text-align: center;">Hình ảnh của chứng chỉ đã cập nhật</th>
+            <th class="CheckBox" style="width: 15%;">
+              Chọn tất cả
+              <br>
+              <input type="checkbox" id="he" class="preference1" name="preference1" value={{this._id}}>
+              </th>
+          </tr>
+        </thead>
+        <!-- Dòng dữ liệu -->
+        <tbody>
+          {{#each certificate}}
+            <tr>
+            <td> 
+      {{sum @index 1}}
+            </td>
+             <td>
+              {{this.condition}}
+            </td>
+          <td style="text-align: center;">
+            <img src={{this.img}} alt="" style="width: 25%; height: auto;" class="Big">
+          </td>
+            <td class="CheckBox">
+              <input type="checkbox" class="preference1" name="preference1" value={{this._id}}>
+          </td>
+          </tr>
+            {{/each}}
+          
+          <!-- Thêm các dòng khác nếu cần -->
+        </tbody>
+      </table>
+    </div>
+   
+    {{!-- <div class="group-7-R2u" id="update">Cập nhật</div>
+     <div class="group-7-R2u" id="Xoa">Xóa</div> --}}
+  </div>
+ 
+  <div class="footer-gzR">
+    <div class="group-9-F1w">
+      <img class="image-2-U9b" src="../page-1/assets/image-2-Mg1.png"/>
+      <p class="trng-i-hc-cng-ngh-thng-tin-hqg-hcm-rR3">Trường đại học Công nghệ Thông tin - ĐHQG - HCM</p>
+    </div>
+    <div class="group-10-ii9">
+      <p class="khu-ph-6-plinh-trung-tpth-c-tph-ch-minh-dq7">Khu phố 6, P.Linh Trung, Tp.Thủ Đức, Tp.Hồ Chí Minh.</p>
+      <p class="in-thoi-028-372-51993-ext-113h-t-xa-qua-mng-112h-chnh-quy-9YZ">Điện thoại: (028) 372 51993, Ext: 113(Hệ từ xa qua mạng), 112(Hệ chính quy).</p>
+      <p class="email-uitgmailcom-dyX">Email: UIT@gmail.com</p>
+    </div>
+  </div>
+
+ 
+</div>
+
+{{!-- <script type="module" src="https://cdnjs.cloudflare.com/ajax/libs/firebase/10.7.1/firebase-storage.js"></script>
+<script type="module" src="https://cdnjs.cloudflare.com/ajax/libs/firebase/10.7.1/firebase-app.js"> --}}
+</script>
+<script>
+  var Big=document.querySelectorAll(".Big");
+    var moden=document.querySelector(".moden");
+    for (var i = 0; i < Big.length; i++) {
+  Big[i].onclick = function (index) {
+    return function () {
+      moden.querySelector("img").setAttribute("src",Big[index].src)
+      moden.style.display='flex';
+    };
+  }(i);
+    }
+  moden.onclick=function()
+  {
+    moden.style.display='none';
+  }
+</script>
+</body>

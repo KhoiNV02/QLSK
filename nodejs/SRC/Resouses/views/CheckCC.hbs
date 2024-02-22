@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <title>admin duyệt sự kiện</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter%3A400%2C700"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C700"/>
+  <link rel="stylesheet" href="../page-1/styles/admin.css"/>
+  <link rel="stylesheet" href="../page-1/styles/DuyetCC.css">
+</head>
+<body>
+<div class="admin-duyt-s-kin-nyB">
+  <div class="auto-group-leto-j7j">
+    {{!-- <div class="header-SXw">
+      <div class="auto-group-sdkj-k2q">
+        <p class="trng-i-hc-cng-ngh-thng-tin-hqg-hcm-FkH">Trường đại học Công nghệ Thông tin - ĐHQG - HCM</p>
+        <p class="truyn-thng-v-s-kin-71o">Truyền thông và sự kiện</p>
+        <img class="image-2-oQR" src="../page-1/assets/image-2-qZ7.png"/>
+      </div>
+      <div class="auto-group-jz8h-8hb">
+      </div>
+    </div> --}}
+    <p class="cc-s-kin-ch-c-duyt-GYu">Kiểm tra chứng chỉ sinh viên đăng ký xét danh hiệu</p>
+<div class="chua">
+
+
+  <div class="container">
+   <div class="left">
+    <h1>Upload Excel File</h1>
+    <input type="file" id="fileInput" accept=".xlsx, .xls" onchange="handleFile(event)">
+    <p id="status"></p>
+   </div>
+    <!-- <div class="right">
+      <select style="background-image: url('../page-1/assets/group.png');" id="GiayKhen" name="cars" class="auto-group-dkzh-f1o" aria-placeholder="Loại hình sự kiện">
+        <option value="volvo">Chọn loại giấy khen thưởng</option>
+        <option value="1">giấy khen loại hình học thuật</option>
+        <option value="2">giấy khen loại hình thể thao</option>
+      </select>
+      <button onclick="uploadFile()">Upload</button>
+    </div> -->
+   
+</div>
+
+</div>
+
+<div id="tableContainer"></div>
+<div class="group-7-R2u" id="update1" onclick="exportToExcel()">Xuất Excel</div>
+  </div>
+  <a href="#" id="backToTopBtn" onclick="scrollToTop()"><p> &#8593; </p></a>
+  <div class="footer-A13">
+    <div class="group-9-7S5">
+      <img class="image-2-Sz9" src="../page-1/assets/image-2-P4q.png"/>
+      <p class="trng-i-hc-cng-ngh-thng-tin-hqg-hcm-Nso">Trường đại học Công nghệ Thông tin - ĐHQG - HCM</p>
+    </div>
+    <div class="group-10-sJm">
+      <p class="khu-ph-6-plinh-trung-tpth-c-tph-ch-minh-z8V">Khu phố 6, P.Linh Trung, Tp.Thủ Đức, Tp.Hồ Chí Minh.</p>
+      <p class="in-thoi-028-372-51993-ext-113h-t-xa-qua-mng-112h-chnh-quy-V5F">Điện thoại: (028) 372 51993, Ext: 113(Hệ từ xa qua mạng), 112(Hệ chính quy).</p>
+      <p class="email-uitgmailcom-nKF">Email: UIT@gmail.com</p>
+    </div>
+
+  </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.1/xlsx.full.min.js"></script>
+<script>
+ 
+  function exportToExcel() {
+  // Lấy tham chiếu đến bảng HTML
+   var table = document.getElementById("Bang").cloneNode(true);
+// Xác định vị trí cột cuối
+ for (var i = 1; i < table.rows.length; i++) {
+   if (table.rows[i].cells[table.rows[1].cells.length - 1].querySelector("input").checked===false)
+   {
+    table.deleteRow(i);
+    i--;
+   }
+  }
+  var lastColumnIndex = table.rows[1].cells.length - 1;
+  // Duyệt qua từng dòng và xóa ô ở cột cuối
+  for (var i = 1; i < table.rows.length; i++) {
+    table.rows[i].deleteCell(lastColumnIndex);
+  }
+  // Xác định vị trí cột cuối
+  var lastColumnIndex = table.rows[1].cells.length - 1;
+  // Duyệt qua từng dòng và xóa ô ở cột cuối
+  for (var i = 1; i < table.rows.length; i++) {
+    table.rows[i].deleteCell(lastColumnIndex);
+  }
+  var lastColumnIndex = table.rows[1].cells.length - 1;
+  var qu=document.querySelectorAll(".note");
+ // Thêm dữ liệu Ghi Chú vào bảng
+{{!-- table += '<td>' + 'Ghi Chú' + '</td>'; --}}
+for (var i = 1; i < table.rows.length; i++) {
+  var noteCell = table.rows[i].insertCell(lastColumnIndex);
+  if (qu[i - 1]) {
+    noteCell.innerHTML = qu[i - 1].value;
+  } else {
+    noteCell.innerHTML = ''; // hoặc giá trị mặc định khác
+  }
+}
+
+
+  // Tạo một đối tượng Workbook từ thư viện SheetJS
+  var wb = XLSX.utils.table_to_book(table);
+
+  // Chuyển đổi đối tượng Workbook thành một định dạng dữ liệu Excel (binary)
+  var wbout = XLSX.write(wb, { bookType: 'xlsx', bookSST: true, type: 'binary' });
+
+  // Tạo một Blob từ dữ liệu binary và tạo một URL
+  var blob = new Blob([s2ab(wbout)], { type: 'application/octet-stream' });
+  var url = URL.createObjectURL(blob);
+
+  // Tạo một thẻ a để tạo và kích hoạt sự kiện tải về
+  var a = document.createElement('a');
+  a.href = url;
+  a.download = 'DanhSachXetThuong.xlsx';
+  document.body.appendChild(a);
+  a.click();
+
+  // Loại bỏ thẻ a sau khi tải về hoàn tất
+  document.body.removeChild(a);
+}
+
+// Hàm chuyển đổi chuỗi sang mảng byte
+function s2ab(s) {
+  var buf = new ArrayBuffer(s.length);
+  var view = new Uint8Array(buf);
+  for (var i = 0; i != s.length; ++i) view[i] = s.charCodeAt(i) & 0xFF;
+  return buf;
+}
+
+    var nav=document.querySelectorAll(".moi");
+    for (var j = 0; j < nav.length; j++) {
+        nav[j].style.textDecoration = 'none'; // Fix the typo in textDecorator
+        nav[j].style.color = 'black';
+
+      }
+  nav[2].style.color = '#0047fe';
+      nav[2].style.textDecoration = 'underline';
+ function handleFile(e) {
+    var fileInput = document.getElementById('fileInput');
+    var tableContainer = document.getElementById('tableContainer');
+
+    var file = e.target.files[0];
+    if (!file) {
+        return;
+    }
+
+    // Đọc dữ liệu từ file Excel sử dụng SheetJS
+    var reader = new FileReader();
+    reader.onload = function (e) {
+        var data = new Uint8Array(e.target.result);
+        var workbook = XLSX.read(data, { type: 'array' });
+
+        // Lấy dữ liệu từ sheet đầu tiên
+        var sheetName = workbook.SheetNames[0];
+        var worksheet = workbook.Sheets[sheetName];
+
+        // Chuyển đổi dữ liệu thành mảng JSON
+        var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
+
+        // Hiển thị dữ liệu trên bảng
+        var uniqueData = removeDuplicates(jsonData);
+        renderTable(uniqueData);
+    };
+    reader.readAsArrayBuffer(file);
+}
+
+function removeDuplicates(data) {
+    var uniqueData = [];
+    var seen = {};
+
+    for (var i = 0; i < data.length; i++) {
+        var row = data[i].toString();
+        if (!seen[row]) {
+            uniqueData.push(data[i]);
+            seen[row] = true;
+        }
+    }
+
+    return uniqueData;
+}
+
+function renderTable(data) {
+    var tableContainer = document.getElementById('tableContainer');
+  var STT=1;
+  var MSSV;
+    // Tạo bảng HTML
+    var table = '<table border="1" id="Bang">';
+    for (var i = 0; i < data.length; i++) {
+        table += '<tr>';
+          if (i!=0)
+          {
+            table+='<td>'+STT+'</td>';
+          STT++;
+          }
+          else
+          {
+            table+='<td>'+'STT'+'</td>';
+          }
+         
+        for (var j = 0; j < 4; j++) {
+            table += '<td>' + data[i][j] + '</td>';
+            MSSV=data[i][j];
+        }
+        if (i===0)
+        table+='<td>'+'Ghi chú'+'</td>';
+        if(i!=0)
+        {
+          table+='<td>'+'<textarea class="note" name="w3review" rows="4" cols="50"></textarea>'+'</td>';
+          table+='<td>'+'<a href="#" target="_blank">Xem chứng chỉ</a>'+'</td>';
+          table+='<td>'+'<input type="checkbox" class="preference1" name="preference1" value="true" checked style="display:none">'+'</td>';
+        }
+        table += '</tr>';
+    }
+    // Hiển thị bảng trên trang web
+    tableContainer.innerHTML = table;
+    var tr=document.querySelectorAll("tr");
+    var td=tr[0].querySelectorAll("td");
+    var index;
+    for (var i=0;i<td.length;i++)
+    {
+      if (td[i].textContent==="MSSV")
+      {
+       index=i;
+       break; 
+      }
+    }
+
+    for (var i=1;i<tr.length;i++)
+    {
+      var MSSV= tr[i].querySelectorAll("td")[index].textContent;
+      tr[i].querySelectorAll("td")[tr[i].querySelectorAll("td").length-2].querySelector("a").href=`{{local}}/CCDetail?MSSV=${MSSV}`;
+      if (MSSV!=='20520999')
+      {
+      tr[i].querySelectorAll("td")[tr[i].querySelectorAll("td").length-2].querySelector("a").textContent='';  
+      }
+    }
+}
+
+</script>
+<script>
+// Hiển thị hoặc ẩn nút quay về đầu trang dựa vào vị trí cuộn trang
+window.onscroll = function() {
+    showBackToTopButton();
+};
+
+function showBackToTopButton() {
+    var backToTopBtn = document.getElementById('backToTopBtn');
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        backToTopBtn.style.display = 'flex';
+    } else {
+        backToTopBtn.style.display = 'none';
+    }
+}
+
+// Thực hiện cuộn về đầu trang khi nút được click
+function scrollToTop() {
+    document.body.scrollTop = 0; // Cho trình duyệt Safari
+    document.documentElement.scrollTop = 0; // Cho trình duyệt Chrome, Firefox, IE và Opera
+}
+
+</script>
+</body>

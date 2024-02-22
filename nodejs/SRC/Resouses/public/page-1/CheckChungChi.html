@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <title>admin duyệt sự kiện</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter%3A400%2C700"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C700"/>
+  <link rel="stylesheet" href="./styles/admin.css"/>
+  <link rel="stylesheet" href="./styles/DuyetCC.css">
+</head>
+<body>
+<div class="admin-duyt-s-kin-nyB">
+  <div class="auto-group-leto-j7j">
+    <div class="header-SXw">
+      <div class="auto-group-sdkj-k2q">
+        <p class="trng-i-hc-cng-ngh-thng-tin-hqg-hcm-FkH">Trường đại học Công nghệ Thông tin - ĐHQG - HCM</p>
+        <p class="truyn-thng-v-s-kin-71o">Truyền thông và sự kiện</p>
+        <img class="image-2-oQR" src="./assets/image-2-qZ7.png"/>
+      </div>
+      <div class="auto-group-jz8h-8hb">
+      </div>
+    </div>
+    <p class="cc-s-kin-ch-c-duyt-GYu">Kiểm tra chứng chỉ sinh viên đăng ký xét danh hiệu</p>
+<div class="chua">
+
+
+  <div class="container">
+   <div class="left">
+    <h1>Upload Excel File</h1>
+    <input type="file" id="fileInput" accept=".xlsx, .xls" onchange="handleFile(event)">
+    <p id="status"></p>
+   </div>
+    <!-- <div class="right">
+      <select style="background-image: url('../page-1/assets/group.png');" id="GiayKhen" name="cars" class="auto-group-dkzh-f1o" aria-placeholder="Loại hình sự kiện">
+        <option value="volvo">Chọn loại giấy khen thưởng</option>
+        <option value="1">giấy khen loại hình học thuật</option>
+        <option value="2">giấy khen loại hình thể thao</option>
+      </select>
+      <button onclick="uploadFile()">Upload</button>
+    </div> -->
+   
+</div>
+
+</div>
+
+<div id="tableContainer"></div>
+<div class="group-7-R2u" id="update1">Xuất Excel</div>
+  </div>
+  <a href="#" id="backToTopBtn" onclick="scrollToTop()"><p> &#8593; </p></a>
+  <div class="footer-A13">
+    <div class="group-9-7S5">
+      <img class="image-2-Sz9" src="./assets/image-2-P4q.png"/>
+      <p class="trng-i-hc-cng-ngh-thng-tin-hqg-hcm-Nso">Trường đại học Công nghệ Thông tin - ĐHQG - HCM</p>
+    </div>
+    <div class="group-10-sJm">
+      <p class="khu-ph-6-plinh-trung-tpth-c-tph-ch-minh-z8V">Khu phố 6, P.Linh Trung, Tp.Thủ Đức, Tp.Hồ Chí Minh.</p>
+      <p class="in-thoi-028-372-51993-ext-113h-t-xa-qua-mng-112h-chnh-quy-V5F">Điện thoại: (028) 372 51993, Ext: 113(Hệ từ xa qua mạng), 112(Hệ chính quy).</p>
+      <p class="email-uitgmailcom-nKF">Email: UIT@gmail.com</p>
+    </div>
+
+  </div>
+</div>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.17.1/xlsx.full.min.js"></script>
+<script>
+ function handleFile(e) {
+    var fileInput = document.getElementById('fileInput');
+    var tableContainer = document.getElementById('tableContainer');
+
+    var file = e.target.files[0];
+    if (!file) {
+        return;
+    }
+
+    // Đọc dữ liệu từ file Excel sử dụng SheetJS
+    var reader = new FileReader();
+    reader.onload = function (e) {
+        var data = new Uint8Array(e.target.result);
+        var workbook = XLSX.read(data, { type: 'array' });
+
+        // Lấy dữ liệu từ sheet đầu tiên
+        var sheetName = workbook.SheetNames[0];
+        var worksheet = workbook.Sheets[sheetName];
+
+        // Chuyển đổi dữ liệu thành mảng JSON
+        var jsonData = XLSX.utils.sheet_to_json(worksheet, { header: 1 });
+
+        // Hiển thị dữ liệu trên bảng
+        var uniqueData = removeDuplicates(jsonData);
+        renderTable(uniqueData);
+    };
+    reader.readAsArrayBuffer(file);
+}
+
+function removeDuplicates(data) {
+    var uniqueData = [];
+    var seen = {};
+
+    for (var i = 0; i < data.length; i++) {
+        var row = data[i].toString();
+        if (!seen[row]) {
+            uniqueData.push(data[i]);
+            seen[row] = true;
+        }
+    }
+
+    return uniqueData;
+}
+
+function renderTable(data) {
+    var tableContainer = document.getElementById('tableContainer');
+  var STT=1;
+    // Tạo bảng HTML
+    var table = '<table border="1">';
+    for (var i = 0; i < data.length; i++) {
+        table += '<tr>';
+          if (i!=0)
+          {
+            table+='<td>'+STT+'</td>';
+          STT++;
+          }
+          else
+          {
+            table+='<td>'+'STT'+'</td>';
+          }
+         
+        for (var j = 0; j < 4; j++) {
+            table += '<td>' + data[i][j] + '</td>';
+        }
+        if(i!=0)
+        {
+          
+          table+='<td>'+'<a href="https://app.diagrams.net/#G11z-h7Wyn4xp5MzwCvvxAHomJ7m8Qvz95" target="_blank">Xem chứng chỉ</a>'+'</td>';
+          table+='<td>'+'<input type="checkbox" class="preference1" name="preference1" value="">'+'</td>';
+        }
+
+        table += '</tr>';
+    }
+    // Hiển thị bảng trên trang web
+    tableContainer.innerHTML = table;
+}
+
+</script>
+<script>
+// Hiển thị hoặc ẩn nút quay về đầu trang dựa vào vị trí cuộn trang
+window.onscroll = function() {
+    showBackToTopButton();
+};
+
+function showBackToTopButton() {
+    var backToTopBtn = document.getElementById('backToTopBtn');
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        backToTopBtn.style.display = 'flex';
+    } else {
+        backToTopBtn.style.display = 'none';
+    }
+}
+
+// Thực hiện cuộn về đầu trang khi nút được click
+function scrollToTop() {
+    document.body.scrollTop = 0; // Cho trình duyệt Safari
+    document.documentElement.scrollTop = 0; // Cho trình duyệt Chrome, Firefox, IE và Opera
+}
+
+</script>
+</body>

@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <title>Trang đăng ký xét thưởng</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/emojionearea/dist/emojionearea.min.css" />
+<script src="https://cdn.jsdelivr.net/npm/jquery"></script>
+<script src="https://cdn.jsdelivr.net/npm/emojionearea/dist/emojionearea.min.js"></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter%3A400%2C700"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C700"/>
+  <link rel="stylesheet" href="../page-1/styles/DongGop.css"/>
+</head>
+<body>
+<div class="trang-ng-k-xt-thng-X6m">
+  {{!-- <div class="header-FHf">
+    <div class="auto-group-wnaz-AfX">
+      <p class="trng-i-hc-cng-ngh-thng-tin-hqg-hcm-h9f">Trường đại học Công nghệ Thông tin - ĐHQG - HCM</p>
+      <p class="truyn-thng-v-s-kin-NFo">Truyền thông và sự kiện</p>
+      <img class="image-2-sCZ" src="./assets/image-2-uqX.png"/>
+    </div>
+    <p class="trang-ch-CEq">Trang chủ</p>
+    <p class="xt-thng-WFX">Xét thưởng</p>
+    <p class="ng-gp-1CH">Đóng góp</p>
+    <p class="cp-nht-821">Cập nhật</p>
+    <div class="auto-group-iw1s-SYV">Search.....</div>
+  </div> --}}
+  <div class="auto-group-tzyo-uS5">
+    <!-- <div class="auto-group-xk3s-SS1">
+      <p class="chn-loi-s-kin-L1b">Chọn loại sự kiện</p>
+      <img class="group-dmP" src="./assets/group-joT.png"/>
+    </div> -->
+    <select id="suggest" name="cars" class="auto-group-xk3s-SS1" style="background-image: url('../page-1/assets/group.png')" aria-placeholder="Loại hình sự kiện">
+      <option value="volvo">Chọn loại hình sự kiện</option>
+      <option value="1">Sự kiện tình nguyện</option>
+      <option value="2">Sự kiện học thuật</option>
+      <option value="3">Sự kiện thể thao</option>
+      <option value="4">Sự kiện giải trí</option>
+    </select>
+    <p class="ng-gp-cc-tng-s-kin-LA1">Đóng góp các ý tưởng sự kiện</p>
+    <div class="auto-group-x41t-2Yd">
+      <textarea class="Gopy" name="" id="content" cols="30" rows="10"> </textarea>
+   </div>
+    <div class="group-7-NH3" id="send">Gửi</div>
+  </div>
+  <div class="footer-2sP">
+    <div class="group-9-nrZ">
+      <img class="image-2-WnZ" src="../page-1/assets/image-2-9Ch.png"/>
+      <p class="trng-i-hc-cng-ngh-thng-tin-hqg-hcm-EyT">Trường đại học Công nghệ Thông tin - ĐHQG - HCM</p>
+    </div>
+    <div class="group-10-7nM">
+      <p class="khu-ph-6-plinh-trung-tpth-c-tph-ch-minh-SJq">Khu phố 6, P.Linh Trung, Tp.Thủ Đức, Tp.Hồ Chí Minh.</p>
+      <p class="in-thoi-028-372-51993-ext-113h-t-xa-qua-mng-112h-chnh-quy-Ycm">Điện thoại: (028) 372 51993, Ext: 113(Hệ từ xa qua mạng), 112(Hệ chính quy).</p>
+      <p class="email-uitgmailcom-qbs">Email: UIT@gmail.com</p>
+    </div>
+  </div>
+</div>
+</body>
+<script>
+  var send=document.querySelector("#send");
+var content=document.querySelector("#content");
+var selectBox=document.querySelector("#suggest");
+  var selectedValue ;
+selectBox.addEventListener("change", function() {
+      // Lấy giá trị hiện tại của select box
+  selectedValue    = selectBox.options[selectBox.selectedIndex].text;
+
+      // In giá trị ra console để kiểm tra
+    });
+
+  send.onclick=function()
+  {
+    if (selectBox.value==='volvo')
+    {alert("vui lòng chọn loại hình sự kiện trước khi gửi");}
+    else
+    {
+   var data = { dr: content.value,dt:selectedValue };
+axios.post(`{{local}}/views/save`, data, {
+  headers: {
+    'Content-Type': 'application/json'
+  }
+})
+.then(response => {
+  alert("đóng góp của bạn đã được gửi đi thành công");
+ location.reload(true);
+});
+  }
+  }
+var nav=document.querySelectorAll(".nav");
+   for (var j = 0; j < nav.length; j++) {
+        nav[j].style.textDecoration = 'none'; // Fix the typo in textDecorator
+        nav[j].style.color = 'black';
+
+      }
+      var MSSV='20520999';
+ nav[2].style.color = '#0047fe';
+      nav[2].style.textDecoration = 'underline'; // Fix the typo in textDecorator
+  {{!-- for (var i = 0; i < nav.length; i++) {
+  nav[i].onclick = function (index) {
+    return function () {
+      if (index===0)
+      {
+         window.location.href = `{{local}}/home`;
+      }
+      else
+      if (index===1)
+      {
+             window.location.href = `{{local}}/thuong?MSSV=${MSSV}`;
+      }
+      else
+      if (index===2)
+      {
+      window.location.href = `{{local}}/views`;
+      }
+        else
+      if (index===3)
+      {
+          window.location.href = `{{local}}/CapNhat`;
+      }
+    };
+  }(i);
+} --}}
+</script>

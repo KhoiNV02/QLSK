@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <title>Trang đăng ký xét thưởng</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter%3A400%2C700"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C700"/>
+  <link rel="stylesheet" href="../page-1/styles/xetthuong.css"/>
+</head>
+<body>
+<div class="trang-ng-k-xt-thng-ZED">
+  <div class="auto-group-8buq-FKK">
+    <div class="auto-group-tjqb-BCy">
+<a target="_blank" id="xemchitiet" href="#" style="position: absolute;
+    left: 62rem;
+    top: 7rem;
+    font-size: 2rem;
+    text-decoration: underline;
+    color: black;">Xem chi tiết danh hiệu</a>
+      <select id="chose" name="cars" class="auto-group-hdmf-hBK" style="background-image: url('../page-1/assets/group.png')" aria-placeholder="Loại hình sự kiện">
+        <option value="0">Chọn loại nội dung khen thưởng</option>
+         {{#each rewards}}
+        <option class="reward" value={{sum @index 1}}>{{this.name}}</option>
+        {{/each}}
+      </select>
+     
+      <p class="hin-ti-bn-c-3-danh-hiu-iu-kin-ng-k-xt-thng-DJ5" id="current" style="margin-left: 13rem;">Hiện tại bạn có 2 danh hiệu mở đăng ký xét thưởng</p>
+    </div>
+    <p class="cc-tiu-ch-xt-danh-hiu-ugh" id="currentYear">Các hoạt động bạn đã tham gia trong </p>
+    <div class="body">
+           {{log "MSSV value:" MSSV}}
+      <table>
+        <!-- Dòng tiêu đề -->
+        <thead>
+          <tr>
+            <th>STT</th>
+            <th>Tên Hoạt Động</th>
+            <th>Tiêu Chí Xét Danh Hiệu</th>
+          </tr>
+        </thead>
+        <!-- Dòng dữ liệu -->
+        <tbody>
+          {{#each event}}
+          <tr>
+            <td> {{sum @index 1}}</td>
+             <td>
+              {{this.name}}
+            </td>
+        
+            <td>     
+              <ul>
+          {{#each this.condition}}
+          <li class="activity">{{this}}</li>
+          {{/each}}
+              </ul>
+            </td>
+          </tr>
+            {{/each}}
+          
+          <!-- Thêm các dòng khác nếu cần -->
+        </tbody>
+      </table>
+    </div>
+    <p class="bn-t-ht-cc-tiu-ch-xt-thng-WW1" id="ring">Dưới đây là 1 số hoạt động hiện tại khuyến khích bạn tham gia để nhận thêm tiêu chí
+<br>
+ 
+    </p>
+    <div class="Khoi">
+ {{#each eventCurrent}}
+    <a style="margin-bottom: 10px;" href={{this.link}} target="_blank">{{sum @index 1}}. {{this.name}}</a>
+    <br>
+   {{/each}}
+    </div>
+      
+  </div>
+  <div class="footer-GtV">
+    <div class="group-9-EaR">
+      <img class="image-2-NRj" src="../page-1/assets/image-2-kRj.png"/>
+      <p class="trng-i-hc-cng-ngh-thng-tin-hqg-hcm-6cd">Trường đại học Công nghệ Thông tin - ĐHQG - HCM</p>
+    </div>
+    <div class="group-10-bZP">
+      <p class="khu-ph-6-plinh-trung-tpth-c-tph-ch-minh-7nd">Khu phố 6, P.Linh Trung, Tp.Thủ Đức, Tp.Hồ Chí Minh.</p>
+      <p class="in-thoi-028-372-51993-ext-113h-t-xa-qua-mng-112h-chnh-quy-2eh">Điện thoại: (028) 372 51993, Ext: 113(Hệ từ xa qua mạng), 112(Hệ chính quy).</p>
+      <p class="email-uitgmailcom-Kth">Email: UIT@gmail.com</p>
+    </div>
+  </div>
+</div>
+</body>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.2/axios.min.js" integrity="sha512-b94Z6431JyXY14iSXwgzeZurHHRNkLt9d6bAHt7BZT38eqV+GyngIi/tVye4jBKPYQ2lBdRs0glww4fmpuLRwA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+<script>
+var register=document.querySelector("#register");
+var r={{{json eventCurrent}}};
+var nav=document.querySelectorAll(".nav");
+   for (var j = 0; j < nav.length; j++) {
+        nav[j].style.textDecoration = 'none'; // Fix the typo in textDecorator
+        nav[j].style.color = 'black';
+      }
+      var MSSV='20520999';
+ nav[1].style.color = '#0047fe';
+      nav[1].style.textDecoration = 'underline'; // Fix the typo in textDecorator
+
+
+ document.getElementById('currentYear').textContent =`Các hoạt động đã tham gia trong năm `+new Date().getFullYear();
+ var xemchitiet=document.querySelector("#xemchitiet");
+ var chose=document.querySelector("#chose");
+chose.addEventListener('change', function () {
+
+    if (chose.value==='0')
+    {
+        xemchitiet.setAttribute("href","#");
+    }
+    else
+    if (chose.value==='1')
+    {
+    xemchitiet.setAttribute('href',"https://www.uit.edu.vn/khoa-cong-nghe-phan-mem-mo-don-dang-ky-sinh-vien-5-tot-cap-khoa");
+    }
+  else
+  if (chose.value==='2')
+    xemchitiet.setAttribute("href","https://www.uit.edu.vn/xet-chon-danh-hieu-thanh-nien-tien-tien-lam-theo-loi-bac-va-tap-tien-tien-lam-theo-loi-bac-cap-truong-nam-hoc-2020-2021");
+    // Gọi hàm hoặc thực hiện các công việc khác ở đây
+  }); 
+  var condition=[
+  '- Tình nguyện tốt',
+    '- Hội nhập tốt',
+      '- Thể lực tốt',
+        '- Học tập tốt',
+  ]
+  var activity=document.querySelectorAll(".activity");
+  var activityArray = Array.from(activity);
+  for (var i=0;i<activity.length;i++)
+  {
+     activityArray.push(activity[i].innerHTML)
+  }
+  var ring =document.querySelector("#ring");
+var result = condition.filter(item => !activityArray.includes(item));
+console.log(result);
+var conditionString = result.join(',-');
+console.log(conditionString.slice(2));
+var reward=document.querySelectorAll(".reward");
+var current=document.querySelector("#current");
+current.textContent=`Hiện tại có ${reward.length} danh hiệu mở đăng ký xét thưởng`;
+</script>

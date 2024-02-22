@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../page-1/styles/Me.css">
+  <title>Document</title>
+</head>
+<div class="modal1">
+    <div class="s-kin-mi-HsB event">
+      <img class="image-4-cuT" src="../page-1/assets/image-4-Xu7.png"/>
+      <p class="th-by-ch-nht-xanh-kEy">Thử bảy Chủ nhật xanh</p>
+      <div class="group-7-2iH">
+        <img class="auto-group-iusz-ZCR" src="../page-1/assets/auto-group-iusz.png"/>
+        <p class="friday-dec-22-2023-Hu7">Friday, Dec 22, 2023</p>
+      </div>
+      <p class="des y-l-mt-trong-nhng-hot-ng-ngha-c-t-chc-hng-nm-vo-ma-xun-nhm-mc-ch-gip-nhng-mnh-i-km-may-mn-em-n-cho-mi-ngi-c-hi-i-i-v-gp-c-nhng-iu-ngha-trong-cuc-sng-hi-vng-rng--bQ1">Đây là một trong những hoạt động ý nghĩa, được tổ chức hằng năm vào mùa xuân, nhằm mục đích giúp đỡ những mảnh đời kém may mắn, đem đến cho mọi người cơ hội để đổi đời và gặp được những điều ý nghĩa trong cuộc sống, hi vọng rằng ................</p>
+      <div class="group-6-WvH xemthem">XEM THÊM</div>
+    </div>
+  </div>
+<div class="mt-4" style="position: relative;">
+    <div class="bao">
+         
+ <h3 style="margin-left: 2rem;">Các sự kiện đã đăng</h3>
+    <table class="table">
+  <thead>
+    <tr>
+        <th scope="col">STT</th>
+        <th scope="col">Tên sự kiện</th>
+
+        <th scope="col">Xem chi tiết</th>
+        <th scope="col">Sửa sự kiện</th>
+         <th scope="col">Xóa sự kiện</th>
+
+    </tr>
+  </thead>
+  <tbody>
+    {{#each courses}}
+    <tr>
+      <th scope="row" style="font-size: 1.5rem; text-align: center;">{{sum @index 1}}</th>
+      <td>{{this.name}}</td>
+      <td><a href="#" class="btn btn-link" onclick="HienThi({{json this._id}})">Xem</a></td>
+      <td>  <a href="#" class="btn btn-link suask">Sửa</a>
+       </td>
+       <td> <a href="#" class="btn btn-link" data-toggle="modal" data-target="#delete_Course" data-id="{{this._id}}" >xóa</a></td>
+    </tr>
+   
+    {{/each}}
+  </tbody>
+</table>
+
+
+    </div>
+   
+</div>
+
+{{!-- form xác nhận việc xóa --}}
+<div id ="delete_Course" class="modal" tabindex="-1" role="dialog" style="font-size: 2rem!important;">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Xác nhận xóa sự kiện</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Bạn có muốn xóa sự kiện này không</p>
+      </div>
+      <div class="modal-footer">
+        <button id="btn-delete" type="button" class="btn btn-danger" >xóa</button>
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+{{!-- form hiden delete --}}
+<form id="delete-form" method="POST" style="display: none;"></form>
+
+<script>
+  var nav=document.querySelectorAll(".moi");
+  var suask=document.querySelectorAll(".suask");
+  for (var i=0;i<suask.length;i++)
+  {
+    suask[i].onclick=function()
+    {
+        nav[0].onclick();
+  }
+  }
+
+    for (var j = 0; j < nav.length; j++) {
+        nav[j].style.textDecoration = 'none'; // Fix the typo in textDecorator
+        nav[j].style.color = 'black';
+      }
+      nav[1].style.color = '#0047fe';
+      nav[1].style.textDecoration = 'underline';
+var rt={{{json courses}}};
+  const modal1=document.querySelector(".modal1");
+function HienThi(st)
+{
+for (var i=0;i<rt.length;i++)
+{
+    if (rt[i]._id===st)
+    {
+        modal1.style.display='flex';
+        modal1.querySelector(".image-4-cuT").setAttribute("src",rt[i].img);
+          modal1.querySelector(".th-by-ch-nht-xanh-kEy").textContent=rt[i].name;
+          modal1.querySelector(".friday-dec-22-2023-Hu7").textContent=rt[i].dateUp;
+          modal1.querySelector(".des").textContent=rt[i].descript;
+           var paragraph =modal1.querySelector(".des");    
+var maxLength = 170;
+
+// Kiểm tra và giới hạn văn bản
+if (paragraph.innerHTML.length > maxLength) {
+  var trimmedText = paragraph.innerHTML.substring(0, maxLength);
+  paragraph.innerHTML = trimmedText + '...';
+}
+        break;
+    }
+}
+}
+  modal1.onclick=function()
+  {
+    modal1.style.display='none';
+  }
+  const sKinMiHsB = document.querySelector('.s-kin-mi-HsB');
+
+window.addEventListener('scroll', function() {
+  const scrollY = window.scrollY || window.pageYOffset;
+  const viewportHeight = window.innerHeight;
+
+  // Cập nhật vị trí dọc của đối tượng giữa màn hình
+  const newPosition = (viewportHeight - sKinMiHsB.offsetHeight) / 2 + scrollY;
+  sKinMiHsB.style.top = newPosition + 'px';
+});
+</script>
+<script>
+document.addEventListener('DOMContentLoaded',function(){
+var deleteForm=document.forms['delete-form'];
+var courseID;
+ $('#delete_Course').on('show.bs.modal', function (event) {
+  var button = $(event.relatedTarget) // Button that triggered the modal
+   courseID = button.data('id') // Extract info from data-* attributes
+});
+
+var btn=document.querySelector('#btn-delete');
+btn.onclick=function(){
+  deleteForm.action='/me/delete/'+courseID+'?_method=DELETE';
+  deleteForm.submit();
+  alert("Xóa sự kiện thành công")
+}
+});
+</script>
+  
+</body>
+</html>

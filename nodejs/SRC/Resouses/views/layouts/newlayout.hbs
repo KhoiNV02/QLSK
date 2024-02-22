@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="/favicon/favicon-32x32.png"/>
+    <link rel="stylesheet" href="/css/app.css">
+  <link rel="stylesheet" href="../page-1/styles/desktop-1.css"/>
+    
+    <title>Truyền thông và sự kiện - UIT</title>
+<style>
+.ten
+{
+  font-size: 2rem;
+  margin-left: 4rem;
+  color: rgb(66, 66, 242);
+  text-align: center;
+}
+</style>
+</head>
+<body>
+<div class="desktop-1-4Qu">
+  <div class="auto-group-us8h-f9o">
+    <div class="header-n7w">
+      <div class="auto-group-stmo-EEq">
+        <p class="trng-i-hc-cng-ngh-thng-tin-hqg-hcm-LYm">Trường đại học Công nghệ Thông tin - ĐHQG - HCM</p>
+        <p class="truyn-thng-v-s-kin-LBP">Truyền thông và sự kiện</p>
+        <img class="image-2-Dky" src="../page-1/assets/image-2.png"/>
+      </div>  
+    <a href="#"><p class="trang-ch-xCm moi">Thêm mới sự kiện</p></a>  
+      <a href="#">  <p class="xt-thng-pEy moi">Sự kiện đã có</p></a>
+     <a href="#"> <p class="ng-gp-ir9 moi">Cập nhật danh sách sinh viên</p></a>
+     <p class="ten">Đoàn Khoa Công <br> nghệ Phần mềm</p>
+      <!-- <div class="auto-group-aajf-8us">Search.....</div> -->
+    </div>
+    
+  </div>
+
+  </div>
+    {{{body}}}
+  <script>
+           var t={{{json TYPE}}};
+              var nav=document.querySelectorAll(".moi");
+ 
+
+    for (var i = 0; i < nav.length; i++) {
+  nav[i].onclick = function (index) {
+    return function () {
+      for (var j = 0; j < nav.length; j++) {
+        nav[j].style.textDecoration = 'none'; // Fix the typo in textDecorator
+        nav[j].style.color = 'black';
+
+      }
+      nav[index].style.color = '#0047fe';
+      nav[index].style.textDecoration = 'underline'; // Fix the typo in textDecorator
+      if (index===0)
+      {
+             window.location.href = `{{local}}/upSK?type=${t}`;
+      }
+      if (index===1)
+      {
+         window.location.href = `{{local}}/me/${t}`;
+      }
+      else
+      if (index===2)
+      {
+      window.location.href = `{{local}}/upDSSV?type=${t}`;
+      }
+    };
+  }(i);
+ 
+    }
+    var ten=document.querySelector(".ten");
+    console.log(t);
+    if (t==1)
+    {
+      ten.innerHTML=`Đoàn trường Công <br> nghệ Thông tin`;
+    }
+  </script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/axios/1.6.2/axios.min.js" integrity="sha512-b94Z6431JyXY14iSXwgzeZurHHRNkLt9d6bAHt7BZT38eqV+GyngIi/tVye4jBKPYQ2lBdRs0glww4fmpuLRwA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</body>
+</html>

@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <link rel="icon" href="/favicon.ico" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#000000" />
+  <title>admin duyệt sự kiện</title>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Inter%3A400%2C700"/>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro%3A400%2C700"/>
+  <link rel="stylesheet" href="../page-1/styles/admin.css"/>
+  <link rel="stylesheet" href="../page-1/styles/DuyetCC.css">
+</head>
+<body>
+<div class="admin-duyt-s-kin-nyB">
+  <div class="auto-group-leto-j7j">
+    {{!-- <div class="header-SXw">
+      <div class="auto-group-sdkj-k2q">
+        <p class="trng-i-hc-cng-ngh-thng-tin-hqg-hcm-FkH">Trường đại học Công nghệ Thông tin - ĐHQG - HCM</p>
+        <p class="truyn-thng-v-s-kin-71o">Truyền thông và sự kiện</p>
+        <img class="image-2-oQR" src="../page-1/assets/image-2-qZ7.png"/>
+      </div>
+      <div class="auto-group-jz8h-8hb">
+      </div>
+    </div> --}}
+    <p class="cc-s-kin-ch-c-duyt-GYu" style="margin-top: 2rem; font-size: 3rem;">Chọn sự kiện để đăng bài ở mục tiêu biểu</p>
+<div class="chua">
+  <select style="background-image: url('../page-1/assets/group.png');" id="Sukien" name="cars" class="auto-group-dkzh-f1o" aria-placeholder="Loại hình sự kiện">
+    <option value="volvo">Chọn sự kiện</option>
+    {{#each eventCurrent}}
+    <option value={{this._id}}>{{this.name}}</option>
+    {{/each}}
+  </select>
+  <h1 style="margin-top: 1rem; margin-bottom: 1rem;">Bản Xem Trước</h1>
+  <div class="s-kin-ni-bt-nht-qFs hot">
+    <div class="frame-3-9XT">
+      <p class="xun-tnh-nguyn-2024-ej7">Lễ Tốt Nghiệp - 2022</p>
+      <div class="auto-group-jelm-Z5P">
+        <p class="friday-december-22-2023-u9F">Friday, December 22, 2023</p>
+        <p class="he y-l-mt-trong-nhng-hot-ng-ngha-c-t-chc-hng-nm-vo-ma-xun-nhm-mc-ch-gip-nhng-mnh-i-km-may-mn-em-n-cho-mi-ngi-B6m">Đây là một trong những hoạt động ý nghĩa, được tổ chức hằng năm vào mùa xuân, nhằm mục đích giúp đỡ những mảnh đời kém may mắn, đem đến cho mọi người................</p>
+        <img class="vector-kp5" src="../page-1/assets/vector-yyw.png"/>
+        <div class="group-5-67F">XEM THÊM</div>
+      </div>
+    </div>
+    <div class="image-3-JDK">
+      <img src="https://www.uit.edu.vn/sites/vi/files/image_from_word/tot_nghiep.jpg" alt="">
+    </div>
+  </div>
+</div>
+
+<div class="group-7-R2u" id="update1">Đăng Bài</div>
+  </div>
+  <a href="#" id="backToTopBtn" onclick="scrollToTop()"><p> &#8593; </p></a>
+  <div class="footer-A13">
+    <div class="group-9-7S5">
+      <img class="image-2-Sz9" src="../page-1/assets/image-2-P4q.png"/>
+      <p class="trng-i-hc-cng-ngh-thng-tin-hqg-hcm-Nso">Trường đại học Công nghệ Thông tin - ĐHQG - HCM</p>
+    </div>
+    <div class="group-10-sJm">
+      <p class="khu-ph-6-plinh-trung-tpth-c-tph-ch-minh-z8V">Khu phố 6, P.Linh Trung, Tp.Thủ Đức, Tp.Hồ Chí Minh.</p>
+      <p class="in-thoi-028-372-51993-ext-113h-t-xa-qua-mng-112h-chnh-quy-V5F">Điện thoại: (028) 372 51993, Ext: 113(Hệ từ xa qua mạng), 112(Hệ chính quy).</p>
+      <p class="email-uitgmailcom-nKF">Email: UIT@gmail.com</p>
+    </div>
+
+  </div>
+</div>
+
+<script>
+  var nav=document.querySelectorAll(".moi");
+
+    for (var j = 0; j < nav.length; j++) {
+        nav[j].style.textDecoration = 'none'; // Fix the typo in textDecorator
+        nav[j].style.color = 'black';
+
+      }
+  nav[0].style.color = '#0047fe';
+      nav[0].style.textDecoration = 'underline';
+  var sk={{{json eventCurrent}}};
+  var selectBox=document.querySelector("#Sukien");
+  selectBox.addEventListener("change", function() {
+      // Lấy giá trị hiện tại của select box
+  selectedValue    = selectBox.options[selectBox.selectedIndex].text;
+  for (var i=0;i<sk.length;i++)
+  {
+   if (sk[i]._id===selectBox.value)
+      {
+        document.querySelector(".xun-tnh-nguyn-2024-ej7").textContent=sk[i].name;
+        document.querySelector(".friday-december-22-2023-u9F").textContent=sk[i].dateUp;
+        document.querySelector(".he").textContent=sk[i].descript;
+        document.querySelector(".image-3-JDK").querySelector("img").setAttribute("src",sk[i].img);
+        var paragraph=document.querySelector(".he");
+var maxLength = 150;
+
+// Kiểm tra và giới hạn văn bản
+if (paragraph.innerHTML.length > maxLength) {
+  var trimmedText = paragraph.innerHTML.substring(0, maxLength);
+  paragraph.innerHTML = trimmedText + '...';
+}
+      }
+  }
+  });
+  var upload=document.querySelector("#update1");
+  
+  upload.onclick=function()
+  {
+ var r,s,s1;
+     for (var i=0;i<sk.length;i++)
+  {
+    if (sk[i].type[0]==='0')
+   {  
+     r=sk[i]._id;
+     s=sk[i].type[1];
+   }
+   if (sk[i]._id===selectBox.value)
+   {
+    s1="0"+sk[i].type;
+   }
+  }
+   var data= {id:r,type:s};
+
+    axios.post('{{local}}/skTieuBieu/Update', data)
+    .then(response => {
+       var data= {id:selectBox.value,type:s1};
+    
+    axios.post('{{local}}/skTieuBieu/Update', data)
+    .then(response => {
+      alert("Cập nhật thành công");
+      location.reload();
+    })
+    .catch(error => {
+
+      console.error('Error uploading image:', error);
+    }); 
+    })
+    .catch(error => {
+
+      console.error('Error uploading image:', error);
+    }); 
+     
+  }
+// Hiển thị hoặc ẩn nút quay về đầu trang dựa vào vị trí cuộn trang
+window.onscroll = function() {
+    showBackToTopButton();
+};
+
+function showBackToTopButton() {
+    var backToTopBtn = document.getElementById('backToTopBtn');
+    if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+        backToTopBtn.style.display = 'flex';
+    } else {
+        backToTopBtn.style.display = 'none';
+    }
+}
+
+// Thực hiện cuộn về đầu trang khi nút được click
+function scrollToTop() {
+    document.body.scrollTop = 0; // Cho trình duyệt Safari
+    document.documentElement.scrollTop = 0; // Cho trình duyệt Chrome, Firefox, IE và Opera
+}
+
+</script>
+</body>

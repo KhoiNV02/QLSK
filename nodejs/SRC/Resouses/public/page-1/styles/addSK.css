@@ -1,0 +1,222 @@
+.CapNhatSK
+{
+height: 6rem;
+margin-top: -4rem;
+flex-direction: column;
+display: flex;
+justify-content: center;
+align-items: end;
+gap: 1rem;
+margin-right: 2rem;
+}
+.CapNhatSK a
+{
+    font-size: 2rem;
+}
+.auto-group-dkzh-f1o
+{
+    width: 40rem;
+
+}
+#capnhatsk
+{
+  display: none;
+}
+.auto-group-kplm-kQd
+{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    gap: 2rem;
+    width: 69rem;
+    border-radius: 2rem;
+    border: 0.5px solid rgb(177, 174, 174);
+    box-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+    margin-bottom: 1rem;
+}
+.auto-group-dkzh-f1o
+{
+margin: 0;
+}
+.group-7-R2u{
+    margin-bottom: 2rem;
+    margin-left: 45rem;
+}
+.tieude
+{
+    margin-bottom: 1.8rem;
+    width: 100%;
+    text-align: center;
+    font-size: 2.8rem;
+    font-weight: 700;
+    line-height: 1.2125;
+    color: #0138a3;
+    font-family: Inter, 'Source Sans Pro';
+    white-space: nowrap;
+    flex-shrink: 0;
+}
+.first
+{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+.first label
+{
+    font-size: 1.5rem;
+}
+.first input
+{   border: 1px solid #000;
+    cursor: auto;
+    border-radius: 1rem;
+}
+.label
+{
+    display: flex;
+    justify-content: space-between;
+}
+.textarea
+{
+    display: flex;
+    gap:0.7rem
+}
+.first textarea
+{
+    padding: 1rem;
+    font-size: 1.5rem;
+    resize: none;
+    width: 40rem;
+    border-radius: 1rem;
+}
+.check
+{
+    background-color: rgba(121, 165, 252, 0.5899999738);
+    width: 10rem;
+    height: 3rem;
+    border-radius: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+.check p
+{
+    margin-bottom: 0!important;
+}
+.check:active
+{
+    opacity: 0.5;
+}
+.group-7-R2u:active
+{opacity: 0.5;}
+#imageContainer
+{
+    display: flex;
+    justify-content: center;
+}
+
+.modal
+{
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+}
+.s-kin-mi-HsB {
+
+  transform: translate(-50%, -50%);
+    transform: scale(1.5);
+    width: 33.5rem;
+    height: 20rem;
+    position: absolute;
+    overflow: hidden;
+    box-shadow: 0 0.4rem 0.4rem rgba(0, 0, 0, 0.25);
+    background-color: #ffffff;
+    border-radius: 2rem;
+  }
+.s-kin-mi-HsB .image-4-cuT {
+    width: 14.2rem;
+    height: 20rem;
+    position: absolute;
+    left: -0.8rem;
+    top: 0;
+    object-fit: cover;
+    vertical-align: top;
+  }
+ .s-kin-mi-HsB .th-by-ch-nht-xanh-kEy {
+    width: 18.6rem;
+    height: 2rem;
+    position: absolute;
+    left: 13.6rem;
+    top: 3.2rem;
+    font-size: 1.6rem;
+    font-weight: 700;
+    line-height: 1.2125;
+    color: rgba(0, 147, 255, 0.9499999881);
+    font-family: Inter, 'Source Sans Pro';
+    white-space: nowrap;
+  }
+ .s-kin-mi-HsB .group-7-2iH {
+    width: 15.9rem;
+    height: 4rem;
+    position: absolute;
+    left: 17.1rem;
+    top: 0.1rem;
+    display: flex;
+    align-items: center;
+  }
+ .s-kin-mi-HsB .group-7-2iH .auto-group-iusz-ZCR {
+    margin-right: 0.4rem;
+    width: 2.3rem;
+    height: 4rem;
+    object-fit: contain;
+    vertical-align: top;
+    flex-shrink: 0;
+  }
+ .s-kin-mi-HsB .group-7-2iH .friday-dec-22-2023-Hu7 {
+    margin-bottom: 1.2rem;
+    font-size: 1.3rem;
+    font-weight: 700;
+    line-height: 1.2125;
+    color: #3b3838;
+    font-family: Inter, 'Source Sans Pro';
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+ .s-kin-mi-HsB .y-l-mt-trong-nhng-hot-ng-ngha-c-t-chc-hng-nm-vo-ma-xun-nhm-mc-ch-gip-nhng-mnh-i-km-may-mn-em-n-cho-mi-ngi-c-hi-i-i-v-gp-c-nhng-iu-ngha-trong-cuc-sng-hi-vng-rng--bQ1 {
+    width: 19.3rem;
+    height: 10.7rem;
+    position: absolute;
+    left: 14.3rem;
+    top: 5.8rem;
+    font-size: 1.1rem;
+    font-weight: 400;
+    line-height: 1.2125;
+    color: #000000;
+    font-family: Inter, 'Source Sans Pro';
+  }
+ .s-kin-mi-HsB .group-6-WvH {
+    width: 10.8rem;
+    height: 2.4843rem;
+    position: absolute;
+    left: 21.8rem;
+    top: 16.6rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.6361rem;
+    font-weight: 700;
+    line-height: 1.2125;
+    color: #000000;
+    font-family: Inter, 'Source Sans Pro';
+    white-space: nowrap;
+    background-color: rgba(123, 175, 243, 0.59);
+    border-radius: 0.7952rem;
+  }
